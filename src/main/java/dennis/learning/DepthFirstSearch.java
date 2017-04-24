@@ -140,4 +140,37 @@ public class DepthFirstSearch {
 		}
 		return ancestorNode;
 	}
+	/**
+	 * If a Binary Search Tree is given, we can use the properties of the tree to quickly identify the lowest common ancestor.
+	 * It would be the first node that is in between the values of the first and second node.
+	 * @param root
+	 * @param firstAncestorNode
+	 * @param secondAncestorNode
+	 * @return the lowest common ancestor
+	 */
+	public Node findLowestCommonAncestorBinarySearchTree(Node root, Node firstAncestorNode, Node secondAncestorNode) {
+		if (root == null) {
+			return null;
+		}
+		if (root.data > firstAncestorNode.data && root.data > secondAncestorNode.data) {
+			return findLowestCommonAncestorBinarySearchTree(root.leftNode, firstAncestorNode, secondAncestorNode);
+		}
+		if (root.data < firstAncestorNode.data && root.data < secondAncestorNode.data) {
+			return findLowestCommonAncestorBinarySearchTree(root.rightNode, firstAncestorNode, secondAncestorNode); 
+		}
+		return root;
+	}
+	public Node findLowestCommonAncestorBinarySearchTreeIterative(Node root, Node firstAncestorNode, Node secondAncestorNode) {
+		if (root == null) {
+			return null;
+		}
+		Node foundNode = root;
+		while (foundNode.data > firstAncestorNode.data && foundNode.data > secondAncestorNode.data) {
+			foundNode = foundNode.leftNode;
+		}
+		while (foundNode.data < firstAncestorNode.data && foundNode.data < secondAncestorNode.data) {
+			foundNode = foundNode.rightNode; 
+		}
+		return foundNode;
+	}
 }

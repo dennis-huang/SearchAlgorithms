@@ -123,4 +123,77 @@ public class DepthFirstSearchTest {
 		result = dfs.findLowestCommonAncestor(root, root.rightNode.rightNode.rightNode, root.rightNode.rightNode.rightNode);
 		Assert.assertEquals(15, result.data);
 	}
+	
+	@Test
+	public void testfindLowestCommonAncestorBinarySearchTree() {
+		dfs = new DepthFirstSearch();
+		root = new Node(10);
+		root.leftNode = new Node(5);
+		root.rightNode = new Node(15);
+		root.leftNode.leftNode = new Node(3);
+		root.leftNode.rightNode = new Node(7);
+		root.rightNode.leftNode = new Node(13);
+		root.rightNode.rightNode = new Node(20);
+		root.leftNode.leftNode.leftNode = new Node(1);
+		root.leftNode.leftNode.rightNode = new Node(4);
+		root.leftNode.rightNode.leftNode = new Node(6);
+		root.leftNode.rightNode.rightNode = new Node(8);
+		root.rightNode.leftNode.leftNode = new Node(12);
+		root.rightNode.leftNode.rightNode = new Node(14);
+		root.rightNode.rightNode.leftNode = new Node(18);
+		root.rightNode.rightNode.rightNode = new Node(25);
+		//Test left side
+		Node result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.leftNode.leftNode, root.leftNode.rightNode.rightNode);
+		Assert.assertEquals(5, result.data);
+		//Test right side
+		result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.rightNode.rightNode.rightNode, root.rightNode.leftNode);
+		Assert.assertEquals(15, result.data);
+		//Test root
+		result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.rightNode.leftNode.leftNode, root.leftNode.rightNode);
+		Assert.assertEquals(10, result.data);
+		//Test one input node is lowest
+		result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.rightNode, root.rightNode.rightNode.rightNode);
+		Assert.assertEquals(15, result.data);
+		//Test both input nodes the same
+		result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.rightNode, root.rightNode);
+		Assert.assertEquals(15, result.data);
+		result = dfs.findLowestCommonAncestorBinarySearchTree(root, root.rightNode.rightNode.rightNode, root.rightNode.rightNode.rightNode);
+		Assert.assertEquals(25, result.data);
+	}
+	@Test
+	public void testfindLowestCommonAncestorBinarySearchTreeIterative() {
+		dfs = new DepthFirstSearch();
+		root = new Node(10);
+		root.leftNode = new Node(5);
+		root.rightNode = new Node(15);
+		root.leftNode.leftNode = new Node(3);
+		root.leftNode.rightNode = new Node(7);
+		root.rightNode.leftNode = new Node(13);
+		root.rightNode.rightNode = new Node(20);
+		root.leftNode.leftNode.leftNode = new Node(1);
+		root.leftNode.leftNode.rightNode = new Node(4);
+		root.leftNode.rightNode.leftNode = new Node(6);
+		root.leftNode.rightNode.rightNode = new Node(8);
+		root.rightNode.leftNode.leftNode = new Node(12);
+		root.rightNode.leftNode.rightNode = new Node(14);
+		root.rightNode.rightNode.leftNode = new Node(18);
+		root.rightNode.rightNode.rightNode = new Node(25);
+		//Test left side
+		Node result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.leftNode.leftNode, root.leftNode.rightNode.rightNode);
+		Assert.assertEquals(5, result.data);
+		//Test right side
+		result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.rightNode.rightNode.rightNode, root.rightNode.leftNode);
+		Assert.assertEquals(15, result.data);
+		//Test root
+		result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.rightNode.leftNode.leftNode, root.leftNode.rightNode);
+		Assert.assertEquals(10, result.data);
+		//Test one input node is lowest
+		result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.rightNode, root.rightNode.rightNode.rightNode);
+		Assert.assertEquals(15, result.data);
+		//Test both input nodes the same
+		result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.rightNode, root.rightNode);
+		Assert.assertEquals(15, result.data);
+		result = dfs.findLowestCommonAncestorBinarySearchTreeIterative(root, root.rightNode.rightNode.rightNode, root.rightNode.rightNode.rightNode);
+		Assert.assertEquals(25, result.data);
+	}
 }

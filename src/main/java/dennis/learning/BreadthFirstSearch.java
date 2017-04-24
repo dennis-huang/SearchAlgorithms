@@ -2,7 +2,6 @@ package dennis.learning;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class BreadthFirstSearch {
 	/**
@@ -17,7 +16,7 @@ public class BreadthFirstSearch {
 		while (!nodeQueue.isEmpty()) {
 			Node node = nodeQueue.poll();
 			if (node == null) {
-				break;
+				continue;
 			}
 			System.out.println(node.data);
 			Node leftNode = node.leftNode;
